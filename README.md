@@ -19,3 +19,4 @@ npm run dev:hot
 
 - express: The main web framework for building the application.
 - pino-http: A logger for HTTP requests, providing structured logging.
+- zod: A library for data validation and parsing.

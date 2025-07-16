@@ -2,23 +2,36 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
-    "lib": ["ES2020"],
+    "moduleResolution": "nodenext",
+    "lib": [
+      "ES2020"
+    ],
     "strict": true,
     "baseUrl": "./",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@src/*": ["src/*"]
+      "@src/*": [
+        "src/*"
+      ]
     },
     "useUnknownInCatchVariables": false,
-    "types": ["vitest/globals", "node"],
+    "types": [
+      "vitest/globals",
+      "node"
+    ]
   },
   "include": [
     "src/**/*.ts",
     "tests/**/*.ts",
-    "eslint.config.mjs",
+    "eslint.config.mjs"
   ],
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register",
+    ],
+  },
   "exclude": [
     "src/public/*"
   ]
