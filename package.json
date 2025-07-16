@@ -8,6 +8,7 @@
     "build": "npm run lint && tsc --build tsconfig.prod.json",
     "start": "cross-env NODE_ENV=production node ./dist",
     "dev": "cross-env NODE_ENV=development ts-node ./src",
+    "test": "echo \"No tests specified\" && exit 0",
     "dev:hot": "nodemon --exec \"npm run dev\" --watch ./src --ext .ts",
     "type-check": "tsc --noEmit"
   },
