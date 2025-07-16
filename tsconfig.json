@@ -27,6 +27,11 @@
     "tests/**/*.ts",
     "eslint.config.mjs"
   ],
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register",
+    ],
+  },
   "exclude": [
     "src/public/*"
   ]
