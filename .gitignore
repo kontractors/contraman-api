@@ -1,0 +1,21 @@
+# Ignore TypeScript build artifacts
+/dist
+/tmp
+/out-tsc
+
+# Node.js dependencies
+/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/.pnp
+.pnp.js
+pnpm-lock.yaml
+package-lock.json
+
+# Ide
+.vscode
+
+# Environment variables
+.env*
+/.idea/

@@ -1,0 +1,29 @@
+{
+  "name": "contraman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "build": "npm run lint && tsc --build tsconfig.prod.json",
+    "start": "cross-env NODE_ENV=production node ./dist",
+    "dev": "cross-env NODE_ENV=development ts-node ./src",
+    "dev:hot": "nodemon --exec \"npm run dev\" --watch ./src --ext .ts",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "pino-http": "^10.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.31.0",
+    "@types/node": "^24.0.14",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.31.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.37.0"
+  },
+  "private": true
+}
