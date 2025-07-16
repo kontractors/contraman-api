@@ -3,7 +3,6 @@ name: Lint and Audit
 permissions:
   actions: read
   contents: read
-  security-events: write
 
 on:
   push:
