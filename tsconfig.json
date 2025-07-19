@@ -20,14 +20,20 @@
     "types": [
       "vitest/globals",
       "node"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types"
     ]
   },
   "include": [
     "src/**/*.ts",
+    "types/**/*.d.ts",
     "tests/**/*.ts",
     "eslint.config.mjs"
   ],
   "ts-node": {
+    "files": true,
     "require": [
       "tsconfig-paths/register"
     ]

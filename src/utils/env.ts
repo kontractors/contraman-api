@@ -3,7 +3,10 @@ import {configDotenv} from "dotenv";
 import * as process from "node:process";
 import * as console from "node:console";
 
-configDotenv();
+configDotenv({
+    // can be production or development or test
+    path: `.env.${process.env.NODE_ENV}`,
+});
 
 // Type-safe environment variables so if any of these are missing, the app will not start
 export const envSchema = z.object({

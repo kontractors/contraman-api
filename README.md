@@ -8,18 +8,10 @@ teams with modern tools.
   * [Features](#features)
   * [Tech Stack](#tech-stack)
   * [Folder Structure](#folder-structure)
-  * [Running Locally](#running-locally)
-    * [Option 1: Without Docker](#option-1-without-docker)
-      * [1. Clone the repo](#1-clone-the-repo)
-      * [2. Install dependencies](#2-install-dependencies)
-      * [3. Create `.env` file from `.env.example`](#3-create-env-file-from-envexample)
-      * [4. Run the server](#4-run-the-server)
-    * [Option 2: With Docker (Development)](#option-2-with-docker-development)
-      * [1. Create a `.env` file from `.env.example`](#1-create-a-env-file-from-envexample)
-      * [2. Start the Docker container](#2-start-the-docker-container)
-  * [Production Deployment](#production-deployment)
-      * [1. Set up production environment variables](#1-set-up-production-environment-variables)
-      * [2. Start the Docker container in production mode](#2-start-the-docker-container-in-production-mode)
+  * [Setup Instructions](#setup-instructions)
+    * [Prerequisites](#prerequisites)
+    * [Development](#development)
+    * [Production](#production)
   * [API Overview](#api-overview)
     * [Auth](#auth)
 <!-- TOC -->
@@ -54,71 +46,56 @@ teams with modern tools.
   /sockets         → WebSocket handlers
 ```
 
-## Running Locally
+## Setup Instructions
 
-### Option 1: Without Docker
-
-#### 1. Clone the repo
-
+### Prerequisites
 ```bash
 git clone https://github.com/kontractors/contraman-api.git
 cd contraman-api
+cp .env.example .env.development
 ```
 
-#### 2. Install dependencies
+### Development
 
+**Without Docker:**
 ```bash
 pnpm install
-```
-
-#### 3. Create `.env` file from `.env.example`
-
-Copy the example environment variables file and fill in your configuration:
-
-```bash
-cp .env.example .env
-```
-
-#### 4. Run the server
-
-```bash
 npm run dev
 ```
 
-### Option 2: With Docker (Development)
-
-#### 1. Create a `.env` file from `.env.example`
-
-```bash
-cp .env.example .env
-```
-
-Edit the `.env` file with your development settings. Make sure to set the database connection parameters to point to your development database.
-
-#### 2. Start the Docker container
-
+**With Docker:**
 ```bash
 docker-compose up
+
+# API will be available at http://localhost:3000
 ```
 
-This will start the application in development mode with hot reloading (using nodemon). The application will automatically restart when you make changes to the source code. Note that the Docker setup does not include a database - you'll need to connect to an external PostgreSQL database as specified in your `.env` file.
+### Production
 
-## Production Deployment
+**Without Docker:**
+```bash
+pnpm install  # Install dependencies
+cp .env.example .env.production # Copy and configure your environment variables
+npm run build # Builds the application into the dist folder
+npm run start # Start the application from the dist folder
 
-#### 1. Set up production environment variables
+# API will be available at http://localhost:3000
+```
 
-You have two options for setting up environment variables:
-- Create a `.env.prod` file based on `.env.example` and fill in your production settings.
-- Set environment variables directly when running docker-compose `docker-compose -f docker-compose.prod.yml up -d --build -e VAR_NAME=value`.
-
-#### 2. Start the Docker container in production mode
+**With Docker:**
 
 ```bash
+# Option 1: Using .env.production file
+cp .env.example .env.production
 docker-compose -f docker-compose.prod.yml up -d
+
+# Option 2: Inline environment variables
+docker-compose -f docker-compose.prod.yml up -d --build -e VAR_NAME=value
+
+# API will be available at http://localhost:3000
 ```
 
-This will build and start the application in production mode. Note that the Docker setup does not include a database - you'll need to connect to an external PostgreSQL database as specified in your `.env.prod` file.
-
+**Note:** Docker setup requires external PostgreSQL database as configured in your environment file.
 
 ## API Overview
 
