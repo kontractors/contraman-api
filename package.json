@@ -5,16 +5,17 @@
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint .",
-    "build": "npm run lint && tsc --build tsconfig.prod.json",
+    "build": "npm run lint && tsc --build tsconfig.prod.json && tsc-alias -p tsconfig.prod.json",
     "start": "cross-env NODE_ENV=production node ./dist",
-    "dev": "cross-env NODE_ENV=development ts-node ./src",
     "test": "echo \"Tests are not implemented yet\" && exit 0",
-    "dev:hot": "nodemon --exec \"npm run dev\" --watch ./src --ext .ts",
+    "dev": "cross-env NODE_ENV=development nodemon --exec \"ts-node ./src\" --watch ./src --ext .ts",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
+    "kysely": "^0.28.3",
     "pino-http": "^10.5.0",
     "pino-pretty": "^13.0.0",
     "zod": "^4.0.5"
@@ -23,10 +24,10 @@
     "@eslint/js": "^9.31.0",
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.14",
-    "cross-env": "^7.0.3",
     "eslint": "^9.31.0",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.16",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.37.0"

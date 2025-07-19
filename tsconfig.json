@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "CommonJS",
-    "moduleResolution": "nodenext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "lib": [
       "ES2020"
     ],
@@ -29,8 +29,8 @@
   ],
   "ts-node": {
     "require": [
-      "tsconfig-paths/register",
-    ],
+      "tsconfig-paths/register"
+    ]
   },
   "exclude": [
     "src/public/*"
