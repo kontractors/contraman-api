@@ -1,6 +1,8 @@
 ## Changes
+
 Brief description of changes.
 
 ## Dependencies
-- [ ] **Added new dependencies?**
+
+- [ ] **Updated or added an endpoint?**
     - [ ] Updated README.md
