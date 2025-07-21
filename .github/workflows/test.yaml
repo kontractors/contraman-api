@@ -32,7 +32,7 @@ jobs:
       - name: Start database with Docker Compose
         run: |
           cd database
-          docker-compose up -d
+          docker compose up -d
           # Wait for database to be ready
           timeout 60s bash -c 'until pg_isready -h localhost -p 5432; do sleep 2; done'
 
