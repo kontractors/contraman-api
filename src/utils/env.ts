@@ -1,7 +1,6 @@
 import {z} from "zod";
 import {configDotenv} from "dotenv";
 import * as process from "node:process";
-import * as console from "node:console";
 import logger from "@src/utils/logger";
 
 configDotenv({
@@ -26,14 +25,14 @@ export const envSchema = z.object({
 export default function validateEnv() {
     try {
         envSchema.parse(process.env);
-        logger.info('✅ Environment variables validated successfully');
+        logger.info('Environment variables validated successfully');
     } catch (error) {
         if (error instanceof z.ZodError) {
-            console.error('🚨 Environment Configuration Error:');
+            logger.error('Environment Configuration Error:');
             error.issues.map(issue => {
-                console.error(`❌ ${issue.path.join('.')}: ${issue.message}`);
+                logger.error(`${issue.path.join('.')}: ${issue.message}`);
             });
-            console.error('\n💡 Please check your .env file and ensure all required variables are set.');
+            logger.error('Please check your .env file and ensure all required variables are set.');
 
             process.exit(1);
         }
