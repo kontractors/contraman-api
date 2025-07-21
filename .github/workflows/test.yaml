@@ -26,6 +26,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: kontractors/contraman-database  # Replace with actual repo
+          ref: main
           path: ./database
           token: ${{ secrets.GITHUB_TOKEN }}  # Use PAT if private repo
 
@@ -57,4 +58,4 @@ jobs:
         if: always()
         run: |
           cd database
-          docker-compose down
+          docker compose down
