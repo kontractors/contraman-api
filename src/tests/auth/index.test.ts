@@ -20,6 +20,7 @@ describe('Signup endpoint', () => {
             .post('/auth/signup')
             .send(validData);
 
+        console.log(response.body);
         expect(response.status).toBe(201);
         // Must have message and data should be the refresh token
         expect(response.body).toHaveProperty('message');

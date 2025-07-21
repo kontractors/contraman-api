@@ -52,7 +52,7 @@ jobs:
         run: pnpm install
 
       - name: Run tests
-        run: npm run test || echo "No tests configured"
+        run: npm run test
 
       - name: Stop database
         if: always()
