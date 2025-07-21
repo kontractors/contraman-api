@@ -19,6 +19,7 @@ export const envSchema = z.object({
     DB_PORT: z.coerce.number().default(5432),
     DB_USER: z.string().default("admin"),
     DB_PASSWORD: z.string().default("password"),
+    DB_NAME: z.string().default("contraman"),
 });
 
 // Custom error handler for better debugging
