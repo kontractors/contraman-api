@@ -2,12 +2,12 @@ import {Router} from 'express';
 import auth from "@src/routes/auth";
 import business from "@src/routes/business";
 import user from "@src/routes/user";
-import {env} from "@src/utils/env";
+import * as process from "node:process";
 
 const router = Router();
 
 router.get('/', (req, res) => {
-    res.success(`Hello from the ${env.NODE_ENV} API!`);
+    res.success(`Hello from the ${process.env.NODE_ENV} API!`);
 });
 
 router.use('/auth', auth);

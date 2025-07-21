@@ -6,6 +6,7 @@
     "lib": [
       "ES2020"
     ],
+    "isolatedModules": true,
     "strict": true,
     "baseUrl": "./",
     "esModuleInterop": true,
@@ -19,7 +20,8 @@
     "useUnknownInCatchVariables": false,
     "types": [
       "vitest/globals",
-      "node"
+      "node",
+      "jest"
     ],
     "typeRoots": [
       "./node_modules/@types",

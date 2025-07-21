@@ -32,6 +32,7 @@
   ],
   "exclude": [
     "tests",
+    "**/*.test.*",
     "src/public/",
     "scripts",
     "eslint.config.ts",

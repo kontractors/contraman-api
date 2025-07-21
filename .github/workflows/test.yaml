@@ -22,6 +22,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Checkout database repo
+        uses: actions/checkout@v4
+        with:
+          repository: kontractors/contraman-database  # Replace with actual repo
+          path: ./database
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use PAT if private repo
+
+      - name: Start database with Docker Compose
+        run: |
+          cd database
+          docker-compose up -d
+          # Wait for database to be ready
+          timeout 60s bash -c 'until pg_isready -h localhost -p 5432; do sleep 2; done'
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -37,4 +51,10 @@ jobs:
         run: pnpm install
 
       - name: Run tests
-        run: npm test || echo "No tests configured"
+        run: npm run test || echo "No tests configured"
+
+      - name: Stop database
+        if: always()
+        run: |
+          cd database
+          docker-compose down
