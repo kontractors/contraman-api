@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "build": "npm run lint && tsc --build tsconfig.prod.json && tsc-alias -p tsconfig.prod.json",
     "start": "cross-env NODE_ENV=production node ./dist",
-    "test": "cross-env NODE_ENV=test jest",
+    "test": "cross-env NODE_ENV=test jest --forceExit",
     "dev": "cross-env NODE_ENV=development nodemon --exec \"ts-node ./src\" --watch ./src --ext .ts",
     "introspect": "cross-env DATABASE_URL=postgres://admin:password@localhost:5432/contraman kysely-codegen --out-file ./types/db.d.ts",
     "type-check": "tsc --noEmit"

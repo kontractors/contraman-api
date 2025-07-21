@@ -12,13 +12,13 @@ configDotenv({
 export const envSchema = z.object({
     NODE_ENV: z.enum(["development", "production", "test"]),
 
-    PORT: z.coerce.number().default(3000),
+    PORT: z.coerce.number(),
 
-    DB_HOST: z.string().default("127.0.0.1"),
-    DB_PORT: z.coerce.number().default(5432),
-    DB_USER: z.string().default("admin"),
-    DB_PASSWORD: z.string().default("password"),
-    DB_NAME: z.string().default("contraman"),
+    DB_HOST: z.string(),
+    DB_PORT: z.coerce.number(),
+    DB_USER: z.string(),
+    DB_PASSWORD: z.string(),
+    DB_NAME: z.string(),
 });
 
 // Custom error handler for better debugging
