@@ -129,7 +129,7 @@ This will populate the `types/db.d.ts` file with the latest database schema.
 - `POST /auth/login` — Sign in user - returns refresh token that can be used to get access token
 - `GET /auth/webauthn/login` — Get WebAuthn options for login
 - `POST /auth/webauthn/login` — Login using WebAuthn credential - returns refresh token that can be used to get access token
-- `🔐 POST /auth/refresh` — Returns new access token using the refresh token that was returned on login
+- `🔐 POST /auth/token` — Returns new access token using the refresh token that was returned on login
 - `🔐 POST /auth/logout` — Logout user - invalidates refresh token
 - `🔐 POST /auth/verify` — Verify any arbitrary token (e.g. email verification, phone verification)
 - `🔐 GET /auth/webauthn/register` — Get WebAuthn options for registration
