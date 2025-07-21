@@ -12,6 +12,8 @@ teams with modern tools.
     * [Prerequisites](#prerequisites)
     * [Development](#development)
     * [Production](#production)
+    * [Testing](#testing)
+  * [Database Introspection](#database-introspection)
   * [API Overview](#api-overview)
     * [Auth](#auth)
 <!-- TOC -->
@@ -49,6 +51,7 @@ teams with modern tools.
 ## Setup Instructions
 
 ### Prerequisites
+
 ```bash
 git clone https://github.com/kontractors/contraman-api.git
 cd contraman-api
@@ -58,12 +61,14 @@ cp .env.example .env.development
 ### Development
 
 **Without Docker:**
+
 ```bash
 pnpm install
 npm run dev
 ```
 
 **With Docker:**
+
 ```bash
 docker-compose up
 
@@ -73,6 +78,7 @@ docker-compose up
 ### Production
 
 **Without Docker:**
+
 ```bash
 pnpm install  # Install dependencies
 cp .env.example .env.production # Copy and configure your environment variables
@@ -97,6 +103,22 @@ docker-compose -f docker-compose.prod.yml up -d --build -e VAR_NAME=value
 
 **Note:** Docker setup requires external PostgreSQL database as configured in your environment file.
 
+### Testing
+
+Create a `.env.test` file based on `.env.example` and run:
+
+```bash
+npm run test
+```
+
+## Database Introspection
+
+To generate TypeScript types from your PostgreSQL database schema, we use Kysely's introspection feature. This allows us to have type-safe queries and ensures
+that our database schema is always in sync with our TypeScript types.
+
+To generate the types, run: `npm run introspect`
+This will populate the `types/db.d.ts` file with the latest database schema.
+
 ## API Overview
 
 ### Auth
@@ -105,10 +127,9 @@ docker-compose -f docker-compose.prod.yml up -d --build -e VAR_NAME=value
 - `POST /auth/reset-password` — Reset password with token
 - `POST /auth/signup` — Register new user
 - `POST /auth/login` — Sign in user - returns refresh token that can be used to get access token
-- `POST /auth/verify-email` — Verify email address with token
 - `GET /auth/webauthn/login` — Get WebAuthn options for login
 - `POST /auth/webauthn/login` — Login using WebAuthn credential - returns refresh token that can be used to get access token
-- `🔐 POST /auth/refresh` — Returns new access token using the refresh token that was returned on login
+- `🔐 POST /auth/token` — Returns new access token using the refresh token that was returned on login
 - `🔐 POST /auth/logout` — Logout user - invalidates refresh token
 - `🔐 POST /auth/verify` — Verify any arbitrary token (e.g. email verification, phone verification)
 - `🔐 GET /auth/webauthn/register` — Get WebAuthn options for registration
