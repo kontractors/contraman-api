@@ -28,7 +28,7 @@ jobs:
           repository: kontractors/contraman-database  # Replace with actual repo
           ref: main
           path: ./database
-          token: ${{ secrets.PAT }}  # Use PAT if private repo
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use PAT if private repo
 
       - name: Start database with Docker Compose
         run: |
