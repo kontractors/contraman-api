@@ -18,6 +18,13 @@ jobs:
       matrix:
         node-version: [ 20 ]
 
+    env:
+      DB_HOST: "$DB_HOST"
+      DB_PORT: "$DB_PORT"
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_NAME: ${{ secrets.DB_NAME }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -53,13 +60,6 @@ jobs:
 
       - name: Run tests
         run: npm run test
-        env:
-          NODE_ENV: test
-          DB_HOST: $DB_HOST
-          DB_PORT: $DB_PORT
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_NAME: ${{ secrets.DB_NAME }}
 
       - name: Stop database
         if: always()
