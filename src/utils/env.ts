@@ -12,7 +12,7 @@ configDotenv({
 export const envSchema = z.object({
     NODE_ENV: z.enum(["development", "production", "test"]),
 
-    PORT: z.coerce.number(),
+    PORT: z.coerce.number().default(3000),
 
     DB_HOST: z.string(),
     DB_PORT: z.coerce.number(),
