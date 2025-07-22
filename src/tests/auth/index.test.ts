@@ -50,7 +50,7 @@ describe('Auth endpoints', () => {
                 .post('/auth/signup')
                 .send(testUser);
 
-            expect(response.status).toBe(400); // or 409 depending on your logic
+            expect(response.status).toBe(409);
             expect(response.body.details).toMatch(/already exists/i);
         });
     });
