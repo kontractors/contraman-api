@@ -51,7 +51,7 @@ describe('Auth endpoints', () => {
                 .send(testUser);
 
             expect(response.status).toBe(409);
-            expect(response.body.details).toMatch(/already exists/i);
+            expect(response.body.message).toMatch(/already exists/i);
         });
     });
 
