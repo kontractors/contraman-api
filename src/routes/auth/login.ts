@@ -58,10 +58,6 @@ router.post('/', validateData(loginBodySchema), async (req, res) => {
             break;
     }
 
-    if (!refreshToken) {
-        return res.error('Invalid credentials', {}, 401);
-    }
-
     res.success(`Refresh token generated successfully`, {refreshToken});
 });
 

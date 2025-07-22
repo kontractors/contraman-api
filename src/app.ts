@@ -32,7 +32,9 @@ app.use(router);
 app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
     req.log.error(err, "An uncaught error occurred");
     const data = process.env.NODE_ENV === "production" ? {} : err;
-    res.error(err.message, data, res.statusCode || 500);
+    const statusCode = res.statusCode >= 400 ? res.statusCode : 500;
+    
+    res.error(err.message, data, statusCode);
 });
 
 export default app;

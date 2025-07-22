@@ -20,7 +20,7 @@ export const envSchema = z.object({
     DB_PASSWORD: z.string(),
     DB_NAME: z.string(),
 
-    JWT_SECRET: z.string().min(64, 'JWT_SECRET must be at least 32 characters long'),
+    JWT_SECRET: z.string().min(64, 'JWT_SECRET must be at least 64 characters long'),
 });
 
 // Custom error handler for better debugging
