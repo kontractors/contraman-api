@@ -3,7 +3,7 @@ import express, {NextFunction, Request, Response} from "express";
 import logger from "@src/utils/logger";
 import * as process from "node:process";
 import {errorMiddleware, successMiddleware} from "@src/middleware/responses";
-import router from "@src/routes";
+import router from "@src/routes/index";
 import {pinoHttp} from "pino-http";
 
 const app = express();
@@ -20,7 +20,7 @@ app.use(express.json({
 }));
 
 // Provides res.success and res.error methods
-app.use(successMiddleware)
+app.use(successMiddleware);
 app.use(errorMiddleware);
 
 // Start serving our route
@@ -31,8 +31,8 @@ app.use(router);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
     req.log.error(err, "An uncaught error occurred");
-    const data = process.env.NODE_ENV === "production" ? {} : err
-    res.error(err.message, data, 500);
+    const data = process.env.NODE_ENV === "production" ? {} : err;
+    res.error(err.message, data, res.statusCode || 500);
 });
 
 export default app;

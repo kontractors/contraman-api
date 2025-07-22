@@ -1,4 +1,4 @@
-import type {Config} from '@jest/types'
+import type {Config} from '@jest/types';
 
 const config: Config.InitialOptions = {
     preset: 'ts-jest',
@@ -9,5 +9,5 @@ const config: Config.InitialOptions = {
     moduleNameMapper: {
         "@src/(.*)": "<rootDir>/src/$1",
     }
-}
-export default config
+};
+export default config;
