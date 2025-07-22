@@ -45,7 +45,7 @@ describe('Auth endpoints', () => {
             expect(response.body.message).toBe('Invalid data');
         });
 
-        it('should return 400 if user already exists', async () => {
+        it('should return 409 if user already exists', async () => {
             const response = await request(app)
                 .post('/auth/signup')
                 .send(testUser);
