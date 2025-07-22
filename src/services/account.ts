@@ -106,7 +106,5 @@ async function loginByField(field: 'email' | 'username' | 'phone', value: string
         throw new Error(`Invalid ${field} or password.`);
     }
 
-    console.log("test");
-
     return account.refresh_token;
 }

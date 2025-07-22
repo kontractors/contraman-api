@@ -3,7 +3,6 @@ import app from '../../app';
 import {SignupBody} from "@src/routes/auth/signup";
 import {initDatabase} from "@src/db/database";
 import validateEnv from "@src/utils/env";
-import * as console from "node:console";
 import {LoginBody} from "@src/routes/auth/login";
 import {TokenBody} from "@src/routes/auth/token"; // Adjust the path to your app
 
@@ -55,7 +54,6 @@ describe('Auth endpoints', () => {
                 .post('/auth/signup')
                 .send(testUser);
 
-            console.log(response.body);
             expect(response.status).toBe(400); // or 409 depending on your logic
             expect(response.body.details).toMatch(/already exists/i);
         });
@@ -71,7 +69,6 @@ describe('Auth endpoints', () => {
                 .post('/auth/login')
                 .send(body);
 
-            console.log(response.body);
             expect(response.status).toBe(200);
             expect(response.body.data).toHaveProperty('refreshToken');
 
