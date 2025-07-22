@@ -2,7 +2,6 @@ import {database} from "@src/db/database";
 import type {Account, AuthCredential} from "db";
 import {Selectable, Transaction} from "kysely";
 import argon2 from "argon2";
-import * as console from "node:console";
 import {DB} from "../../types/db";
 import * as jwt from "jsonwebtoken";
 
