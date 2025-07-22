@@ -12,6 +12,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "remove",
+    "noPropertyAccessFromIndexSignature": false,
     "paths": {
       "@src/*": [
         "src/*"
@@ -31,8 +33,7 @@
   "include": [
     "src/**/*.ts",
     "types/**/*.d.ts",
-    "tests/**/*.ts",
-    "eslint.config.mjs"
+    "tests/**/*.ts"
   ],
   "ts-node": {
     "files": true,
@@ -41,6 +42,7 @@
     ]
   },
   "exclude": [
-    "src/public/*"
+    "src/public/*",
+    "node_modules"
   ]
 }

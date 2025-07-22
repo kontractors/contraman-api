@@ -70,7 +70,6 @@ export interface AuthCredential {
   integration_metadata: Generated<Json | null>;
   is_active: Generated<boolean | null>;
   last_used_at: Timestamp | null;
-  provider: string | null;
   provider_id: string | null;
 }
 

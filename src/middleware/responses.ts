@@ -8,7 +8,7 @@ export function successMiddleware(req: Request, res: Response, next: () => void)
             success: true
         });
     };
-    next()
+    next();
 }
 
 export function errorMiddleware(req: Request, res: Response, next: () => void) {
@@ -19,5 +19,5 @@ export function errorMiddleware(req: Request, res: Response, next: () => void) {
             success: false
         });
     };
-    next()
+    next();
 }

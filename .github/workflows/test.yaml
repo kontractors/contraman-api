@@ -54,11 +54,12 @@ jobs:
       - name: Run tests
         run: npm run test
         env:
-          DB_HOST: ${{ vars.DB_HOST || 'localhost' }}
-          DB_PORT: ${{ vars.DB_PORT || '5432' }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_HOST: ${{ vars.TEST_DB_HOST || 'localhost' }}
+          DB_PORT: ${{ vars.TEST_DB_PORT || '5432' }}
+          DB_USER: ${{ secrets.TEST_DB_USER }}
+          DB_PASSWORD: ${{ secrets.TEST_DB_PASSWORD }}
+          DB_NAME: ${{ secrets.TEST_DB_NAME }}
+          JWT_SECRET: ${{secrets.TEST_JWT_SECRET }}
 
       - name: Stop database
         if: always()

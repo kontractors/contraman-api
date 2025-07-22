@@ -1,6 +1,6 @@
 import {Kysely, PostgresDialect} from "kysely";
 import {Pool} from "pg";
-import {DB} from "../../types/db";
+import type {DB} from "../../types/db";
 import logger from "@src/utils/logger";
 
 export let database: Kysely<DB>;

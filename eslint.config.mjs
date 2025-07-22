@@ -8,8 +8,8 @@ export default tseslint.config(
     tseslint.configs.recommended,
     {
         ignores: [
-            'dist',
-            'node_modules',
+            'dist/**',
+            'node_modules/',
             'coverage',
             'build',
             'public',
@@ -19,5 +19,8 @@ export default tseslint.config(
             'tmp',
             '**/*.d.ts',
         ],
+        rules: {
+            "semi": "error"
+        }
     }
 );

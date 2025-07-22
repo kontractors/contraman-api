@@ -1,7 +1,7 @@
 import {Router} from 'express';
-import auth from "@src/routes/auth";
-import business from "@src/routes/business";
-import user from "@src/routes/user";
+import auth from "@src/routes/auth/index";
+import business from "@src/routes/business/index";
+import user from "@src/routes/user/index";
 import * as process from "node:process";
 
 const router = Router();

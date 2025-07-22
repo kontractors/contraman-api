@@ -1,8 +1,8 @@
-import app from "./app";
 import * as process from "node:process";
 import validateEnv from "@src/utils/env";
 import {initDatabase} from "@src/db/database";
 import logger from "./utils/logger";
+import app from "@src/app";
 
 // Validate environment variables before starting the server
 validateEnv();

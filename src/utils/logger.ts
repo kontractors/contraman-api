@@ -7,7 +7,9 @@ const transports = [{
     options: {
         colorize: true,
     }
-}]
+}];
+
+
 
 // Modify / Add transports based on environment
 // ...

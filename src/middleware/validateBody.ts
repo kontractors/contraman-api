@@ -11,7 +11,7 @@ export function validateData(schema: z.ZodObject) {
             if (error instanceof ZodError) {
                 const errorMessages = error.issues.map((issue: $ZodIssue) => ({
                     message: `${issue.path.join('.')} is ${issue.message}`,
-                }))
+                }));
                 res.error('Invalid data', errorMessages);
             } else {
                 throw error;
