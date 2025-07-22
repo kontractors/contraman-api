@@ -12,12 +12,11 @@ const SignupBodySchema = z.object({
 });
 
 router.post('/', validateData(SignupBodySchema), async (req, res) => {
-    try {
-        const refreshToken = await createNewUser(req.body.email, req.body.username, req.body.password);
-        res.success('Account created successfully. Use this refresh token to retrieve an access-token from the /auth/token endpoint.', {refreshToken}, 201);
-    } catch (error) {
-        res.error('Error creating account creation', error.message);
-    }
+    // will return 409 on thrown exceptions
+    res.status(409);
+
+    const refreshToken = await createNewUser(req.body.email, req.body.username, req.body.password);
+    res.success('Account created successfully. Use this refresh token to retrieve an access-token from the /auth/token endpoint.', {refreshToken}, 201);
 });
 
 export type SignupBody = z.infer<typeof SignupBodySchema>;

@@ -8,9 +8,6 @@ import * as jwt from "jsonwebtoken";
 export async function createAccessToken(refreshToken: string) {
     // Make sure there is an account associated with this token.
     const account = await getAccountByRefreshToken(refreshToken);
-    if (!account) {
-        throw new Error("Invalid refresh token");
-    }
 
     // Check account status
     if (account.status == 'banned') {
