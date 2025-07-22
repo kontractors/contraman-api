@@ -11,8 +11,6 @@ beforeAll(() => {
     initDatabase();
 });
 
-let refreshToken: string;
-
 describe('Auth endpoints', () => {
     const testUser: SignupBody = {
         email: 'testuser@example.com',
@@ -31,8 +29,6 @@ describe('Auth endpoints', () => {
             expect(response.body).toHaveProperty('message');
             expect(response.body).toHaveProperty('data');
             expect(response.body.data).toHaveProperty('refreshToken');
-
-            refreshToken = response.body.refreshToken;
         });
 
         it('should return 400 for invalid data', async () => {
@@ -58,6 +54,8 @@ describe('Auth endpoints', () => {
             expect(response.body.details).toMatch(/already exists/i);
         });
     });
+
+    let refreshToken: string;
 
     describe('Login', () => {
         it('should login with email and return refresh token', async () => {
